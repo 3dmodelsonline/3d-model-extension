@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeetus Deletus</title>
+    <script src="./scripts/babylon.js" defer></script>
+    <script src="./scripts/babylonjs.loaders.min.js" defer></script>
+    <script src="./viewer.js" defer></script>
+    <title>Model Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            width: 100%;
+            background: #33334c;
+            overflow: hidden;
+        }
+        canvas, #babylonjsLoadingDiv {
+            height: 100% !important;
+            width: 100% !important;
+        }
+    </style>
 </head>
-<body>
-    Yeetus Deletus
+<body width="100%" style="margin: 0; background: #33334c">
+    <canvas id="canvas"></canvas>
 </body>
 </html>
