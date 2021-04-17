@@ -1,0 +1,16 @@
+{
+    "name": "3D Model Viewer",
+    "description": "An extension to integrate online school with an interactive 3D model viewing system.",
+    "version":"0.0.1",
+    "manifest_version": 3,
+    "permissions": ["tabs"],
+    "icons": {
+        "512": "./images/icon-512.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icons": {
+            "512": "./images/icon-512.png"
+        }
+    }
+}
