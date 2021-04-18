@@ -21,8 +21,8 @@ camera.inputs.attached.mousewheel.wheelDeltaPercentage = 0.01;
 const lightUp = new BABYLON.HemisphericLight("lightUp", new BABYLON.Vector3(0, 1, 0));
 const lightDown = new BABYLON.HemisphericLight("lightDown", new BABYLON.Vector3(0, -1, 0));
 
-// Loading Assets
-const assetManager = new BABYLON.SceneLoader.Append(modelsDir + "skull/", "scene.gltf", scene, (scene) => {
+// Loading Scene
+BABYLON.SceneLoader.Append(`https://3d-model-extension-backend.theultimatekeva.repl.co/s/models/digestive-system/`, "scene.gltf", scene, (scene) => {
     scene._activeCamera.zoomOn(scene.meshes); // Zooming to show the whole mesh
 });
 
@@ -33,5 +33,5 @@ resizer();
 
 function resizer() {
     document.body.style.height = window.innerHeight + "px";
-    engine.resize()
+    engine.resize();
 }

@@ -11,15 +11,17 @@
         body {
             margin: 0;
             margin-top: 5px;
-            height: auto;
-            width: 200px;
+            height: 100px;
+            width: 300px;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-content: center;
             align-items: center;
         }
         #icon {
-            height: 80px;
-            width: 80px;
+            height: 100px;
+            width: 100px;
             padding: 5px;
             background: #fff;
             border-radius: 80px;
@@ -29,30 +31,52 @@
             width: 100%;
         }
         #menu {
+            width: calc(100% - 110px);
+            height: 100px;
+            margin-right: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        #menu input[type="text"] {
+            box-sizing: border-box;
+            height: 20px;
+            font-size: 13.3px;
+        }
+        #menu select {
+            box-sizing: border-box;
+            height: 20px;
+        }
+        select:not(:-internal-list-box) {
+            background-color: unset;
+        }
+        #btncontainer {
             width: 100%;
-            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
-        #menu * {
-            cursor: pointer;
-        }
-        #menu div {
-            padding-left: 5px;
-            width: 100%;
-            height: 24px;
-            font-size: 16px;
-            line-height: 24px;
-            background: #fff;
-            text-align: center;
-        }
-        #menu div:hover {
-            background: rgb(189, 189, 189);
+        #btncontainer button{
+            height: 20px;
+            width: 49%;
+            background: rgb(95, 159, 255);
+            border: none;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 13.3px;
         }
     </style>
 </head>
 <body>
     <div id="icon"><img src="./images/icon-512.png" alt="icon"/></div>
     <div id="menu">
-        <div id="launcher">Launch 3D Viewer</div>
+        <input id="name" type="text" placeholder="Room Name" required>
+        <input id="pass" type="password" placeholder="Password" required>
+        <select id="model"><option>Select Model</option></select>
+        <div id="btncontainer">
+            <button id="hostBtn">Host</button>
+            <button id="joinBtn">Join</button>
+        </div>
     </div>
 </body>
 </html>
