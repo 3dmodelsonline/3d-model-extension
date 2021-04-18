@@ -1,5 +1,10 @@
 // Defining Consts
 const canvas = document.getElementById("canvas");
+const followDiv = document.getElementById("followDiv");
+const followInput = document.getElementById("followInput");
+const coverDiv = document.getElementById("coverDiv");
+
+// Query
 const queryParams = new URLSearchParams(window.location.search);
 const room = queryParams.get("name")
 const hostKey = queryParams.get("hostkey");
@@ -58,6 +63,16 @@ if(hostKey) {
         }
     }
 } else {
+    // Adding follow / unfollow host
+    window.follow = true;
+    followDiv.style.display = "block";
+    coverDiv.style.display = "block";
+    followInput.checked = true;
+    followInput.addEventListener("click", e => {
+        window.follow = e.target.checked;
+        coverDiv.style.display = e.target.checked ? "block" : "none";
+    });
+    
     ws.onmessage = res => {
         let message = JSON.parse(res.data);
         console.log(message);
@@ -68,6 +83,7 @@ if(hostKey) {
         // On successful authorization
         if(message[0] == "authR") {
             scene.registerBeforeRender(() => {
+                if(!window.follow) return;
                 camera.position = BABYLON.Vector3.Lerp(camera.position, window.targetPos, 0.1);
                 camera.radius = targetRadius;
             });
