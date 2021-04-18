@@ -47,6 +47,7 @@ function resizer() {
 const ws = new WebSocket("wss://3d-model-extension-backend.theultimatekeva.repl.co/");
 window.targetPos = camera.position;
 window.targetRadius = camera.radius;
+window.targetTar = camera.target;
 
 if(hostKey) {
     ws.onmessage = res => {
@@ -59,7 +60,8 @@ if(hostKey) {
         // On successful authorization
         if(message[0] == "authR") {
             let pos = camera.position;
-            setInterval(() => ws.send(JSON.stringify(["a", room, hostKey, pos._x, pos._y, pos._z, camera.radius])), 16);
+            let tar = camera.target;
+            setInterval(() => ws.send(JSON.stringify(["a", room, hostKey, pos._x, pos._y, pos._z, camera.radius, tar._x, tar._y, tar._z])), 16);
         }
     }
 } else {
@@ -86,13 +88,16 @@ if(hostKey) {
                 if(!window.follow) return;
                 camera.position = BABYLON.Vector3.Lerp(camera.position, window.targetPos, 0.1);
                 camera.radius = targetRadius;
+                camera.target = BABYLON.Vector3.Lerp(camera.target, window.targetTar, 0.1);
             });
         }
 
         // Handling movement
         if(message[0] == "a") {
-            targetPos = new BABYLON.Vector3(message[1], message[2], message[3]);
-            targetRadius = message[4];
+            window.targetPos = new BABYLON.Vector3(message[1], message[2], message[3]);
+            window.targetRadius = message[4];
+            console.log(new BABYLON.Vector3(message[5], message[6], message[7]));
+            window.targetTar = new BABYLON.Vector3(message[5], message[6], message[7]);
         }
     }
 }
