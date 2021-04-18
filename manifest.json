@@ -1,16 +1,16 @@
 {
-    "name": "3D Model Viewer",
+    "name": "3D Sessions",
     "description": "An extension to integrate online school with an interactive 3D model viewing system.",
-    "version":"0.0.1",
+    "version":"0.1.0",
     "manifest_version": 3,
     "permissions": ["tabs"],
     "icons": {
-        "512": "./images/icon-512.png"
+        "128": "./images/icon-128.png"
     },
     "action": {
         "default_popup": "popup.html",
         "default_icons": {
-            "512": "./images/icon-512.png"
+            "128": "./images/icon-128.png"
         }
     }
 }

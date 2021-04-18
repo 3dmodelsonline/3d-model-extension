@@ -8,6 +8,7 @@ const coverDiv = document.getElementById("coverDiv");
 const queryParams = new URLSearchParams(window.location.search);
 const room = queryParams.get("name")
 const hostKey = queryParams.get("hostkey");
+document.title = `3D Sessions @ ${room}`;
 
 // Initiating scene
 const engine = new BABYLON.Engine(canvas);
