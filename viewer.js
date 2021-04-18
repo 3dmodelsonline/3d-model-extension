@@ -1,6 +1,6 @@
 // Defining Consts
-const modelsDir = chrome.runtime.getURL("models/");
 const canvas = document.getElementById("canvas");
+const queryParams = new URLSearchParams(window.location.search);
 
 // Initiating scene
 const engine = new BABYLON.Engine(canvas);
@@ -22,7 +22,7 @@ const lightUp = new BABYLON.HemisphericLight("lightUp", new BABYLON.Vector3(0, 1
 const lightDown = new BABYLON.HemisphericLight("lightDown", new BABYLON.Vector3(0, -1, 0));
 
 // Loading Scene
-BABYLON.SceneLoader.Append(`https://3d-model-extension-backend.theultimatekeva.repl.co/s/models/digestive-system/`, "scene.gltf", scene, (scene) => {
+BABYLON.SceneLoader.Append(`https://3d-model-extension-backend.theultimatekeva.repl.co/s/models/${queryParams.get("model")}/`, "scene.gltf", scene, (scene) => {
     scene._activeCamera.zoomOn(scene.meshes); // Zooming to show the whole mesh
 });
 
