@@ -30,7 +30,7 @@ async function joinRoom() {
     if(res.status != 200) return alert("An unknown error occured!");
     
     let room = await res.json();
-    chrome.windows.create({ height: 400, width: 500, focused: true, type: "popup", url: viewer + `?model=${room.model}` });
+    chrome.windows.create({ height: 400, width: 500, focused: true, type: "popup", url: viewer + `?model=${room.model}&name=${room.name}&pass=${pass}` });
 }
 
 async function hostRoom() {
@@ -48,7 +48,8 @@ async function hostRoom() {
     if(res.status != 201) return alert("An unknown error occured!");
 
     let room = await res.json();
-    chrome.windows.create({ height: 400, width: 500, focused: true, type: "popup", url: viewer + `?model=${room.model}` });
+    console.log(room);
+    chrome.windows.create({ height: 400, width: 500, focused: true, type: "popup", url: viewer + `?model=${room.model}&name=${room.name}&hostkey=${room.hostKey}` });
 }
 
 // HTTP Functions
